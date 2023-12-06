@@ -1,0 +1,4 @@
+file url: 
+https://github.com/ozlerhakan/mongodb-json-files/blob/master/datasets/students.json
+
+mongoimport --db database --collection name_collection --file <PATH>

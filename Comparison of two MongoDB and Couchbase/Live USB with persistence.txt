@@ -1,0 +1,7 @@
+--Requirements:
+1. Minimum 64 Gb USB 3.2 
+2. Rufus (latest release)
+
+
+
+https://youtu.be/3wofbmwLNUw?si=hk67LYwoxGqZrD3d

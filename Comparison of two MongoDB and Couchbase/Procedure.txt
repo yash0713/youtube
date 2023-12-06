@@ -1,0 +1,7 @@
+-----------------------------------------------------Follow the steps in order---------------------------------------
+
+1. Install MongoDB and Couchbase. ( commands are in respective files)
+
+2. Import Dataset. ( follow the MongoDB import )
+
+3. Perform CRUD operations. ( commands available in CRUD.txt)

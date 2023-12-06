@@ -1,0 +1,129 @@
+--mongodb
+
+var startTime = new Date()
+db.student_collection.insertOne({
+	"_id" : 201,
+	"name" : "Yash Kumar",
+	"scores" : [
+		{
+			"score" : 10.10,
+			"type" : "exam"
+		},
+		{
+			"score" : 10.11,
+			"type" : "quiz"
+		},
+		{
+			"score" : 10.12,
+			"type" : "homework"
+		}
+	]
+}
+)
+var endTime = new Date()
+var runtime = endTime - startTime
+print("Runtime: " + runtime + " milliseconds");
+
+var startTime = new Date()
+db.student_collection.find({
+	"_id" : 201,
+	"name" : "Yash Kumar",
+	"scores" : [
+		{
+			"score" : 10.10,
+			"type" : "exam"
+		},
+		{
+			"score" : 10.11,
+			"type" : "quiz"
+		},
+		{
+			"score" : 10.12,
+			"type" : "homework"
+		}
+	]
+}
+)
+var endTime = new Date()
+var runtime = endTime - startTime
+print("Runtime: " + runtime + " milliseconds");
+
+var startTime = new Date()
+db.student_collection.updateOne(
+  {
+    "_id": 201,
+    "name": "Yash Kumar",
+    "scores.type": "exam"
+  },
+  {
+    $set: {
+      "scores.$.score": 90
+    }
+  }
+);
+var endTime = new Date()
+var runtime = endTime - startTime
+print("Runtime: " + runtime + " milliseconds");
+
+
+var startTime = new Date()
+db.student_collection.deleteOne({
+  "_id": 201,
+  "name": "Yash Kumar",
+});
+var endTime = new Date()
+var runtime = endTime - startTime
+print("Runtime: " + runtime + " milliseconds");
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+--couchbase
+
+
+INSERT INTO `yash_bucket` (KEY, VALUE)
+VALUES (
+  'document201',
+  {
+    "_id": 201,
+    "name": "Yash Kumar",
+    "scores": [
+      {
+        "score": 10.10,
+        "type": "exam"
+      },
+      {
+        "score": 10.11,
+        "type": "quiz"
+      },
+      {
+        "score": 10.12,
+        "type": "homework"
+      }
+    ]
+  }
+);
+
+
+SELECT * FROM `yash_bucket` WHERE name = 'Yash Kumar';
+
+
+UPDATE `yash_bucket`
+SET scores = ARRAY v FOR v IN scores
+               WHEN v.type = "exam" THEN { "score": 90, "type": "exam" }
+               ELSE v END
+WHERE name = 'Yash Kumar';
+
+DELETE FROM `yash_bucket` WHERE name = 'Yash Kumar';
+
+
+
